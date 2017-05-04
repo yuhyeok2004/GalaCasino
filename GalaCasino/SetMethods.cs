@@ -2,25 +2,24 @@
 using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace NUnit
+namespace GalaCasino
 {
     class SetMethods
     {
-        public static void EnterText(IWebDriver driver, string element, string value, string elementType)
+        public static void EnterText(string element, string value, PropertyType elementType)
         {
-            if (elementType == "Id")
-                new WebDriverWait(driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.Id(element))).SendKeys(value);
-            driver.FindElement(By.Id(element)).SendKeys(value);
-            if (elementType == "ClassName")
-                new WebDriverWait(driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).SendKeys(value);
+            if (elementType == PropertyType.Id)
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.Id(element))).SendKeys(value);
+            if (elementType == PropertyType.ClassName)
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).SendKeys(value);
         }
 
-        public static void ClickButton(IWebDriver driver, string element, string elementType)
+        public static void ClickButton(string element, PropertyType elementType)
         {
-            if (elementType == "Id")
-                new WebDriverWait(driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).Click();
-            if (elementType == "ClassName")
-                new WebDriverWait(driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).Click();
+            if (elementType == PropertyType.Id)
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).Click();
+            if (elementType == PropertyType.ClassName)
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).Click();
         }
     }
 }
