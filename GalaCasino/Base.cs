@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NUnit;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -12,7 +13,7 @@ namespace GalaCasino
             PropertiesCollection.driver = new ChromeDriver();
             PropertiesCollection.driver.Manage().Window.Maximize();
             PropertiesCollection.driver.Navigate().GoToUrl("https://www.galacasino.com/");
-            //ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\NUnit\Data.xlsx");
+            ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\NUnit\Data.xlsx");
         }
 
         [TearDown]

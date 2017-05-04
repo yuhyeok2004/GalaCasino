@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 namespace GalaCasino
 {
     [TestFixture]
-    public class Login : Base
+    public class Login
     {
         [Test]
         public void LoginGood()
         {
-            //driver.Url = "https://google.com";
             SetMethods.ClickButton("btn_action_login", PropertyType.ClassName);
-            //SetMethods.EnterText("a", "a", "a");
+            SetMethods.EnterText("a", "a", PropertyType.ClassName);
         }
     }
 }
