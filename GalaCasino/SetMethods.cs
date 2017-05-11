@@ -13,7 +13,7 @@ namespace GalaCasino
             {
                 new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
             }
-            catch (NoSuchElementException noSuchElement)
+            catch (WebDriverTimeoutException noSuchElement)
             {
                 Console.WriteLine(noSuchElement.Message);
                 Console.WriteLine(element + " does not exist on page");
@@ -36,7 +36,7 @@ namespace GalaCasino
             {
                 new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
             }
-            catch (NoSuchElementException noSuchElement)
+            catch (WebDriverTimeoutException noSuchElement)
             {
                 Console.WriteLine(noSuchElement.Message);
                 Console.WriteLine(element + " does not exist on page");
@@ -59,7 +59,7 @@ namespace GalaCasino
             {
                 new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
             }
-            catch (NoSuchElementException noSuchElement)
+            catch (WebDriverTimeoutException noSuchElement)
             {
                 Console.WriteLine(noSuchElement.Message);
                 Console.WriteLine(element + " does not exist on page");

@@ -1,5 +1,4 @@
 ﻿using NUnit;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -15,7 +14,7 @@ namespace GalaCasino
         [FindsBy(How = How.ClassName, Using = "btn_action_login")]
         public IWebElement loginButtonHeader { get; set; }
 
-        [FindsBy(How = How.Id, Using = "userName")]
+        [FindsBy(How = How.Id, Using = "userNamea")]
         public IWebElement userNameField { get; set; }
 
         [FindsBy(How = How.Id, Using = "password")]
