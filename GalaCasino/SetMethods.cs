@@ -1,25 +1,69 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace GalaCasino
 {
-    class SetMethods
+    public static class SetMethods
     {
-        public static void EnterText(string element, string value, PropertyType elementType)
+        public static void EnterText(this IWebElement element, string value)
         {
-            if (elementType == PropertyType.Id)
-                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.Id(element))).SendKeys(value);
-            if (elementType == PropertyType.ClassName)
-                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).SendKeys(value);
+            try
+            {
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
+            }
+            catch (NoSuchElementException noSuchElement)
+            {
+                Console.WriteLine(noSuchElement.Message);
+                Console.WriteLine(element + " does not exist on page");
+            }
+
+            try
+            {
+                element.SendKeys(value);
+            }
+            catch(InvalidOperationException unableToSendKeys)
+            {
+                Console.WriteLine(unableToSendKeys.Message);
+                Console.WriteLine("Unable to send keys " + value + " to " + element);
+            }
         }
 
-        public static void ClickButton(string element, PropertyType elementType)
+        public static void ClickButton(this IWebElement element)
         {
-            if (elementType == PropertyType.Id)
-                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).Click();
-            if (elementType == PropertyType.ClassName)
-                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30000)).Until(ExpectedConditions.ElementToBeClickable(By.ClassName(element))).Click();
+            try
+            {
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
+            }
+            catch (NoSuchElementException noSuchElement)
+            {
+                Console.WriteLine(noSuchElement.Message);
+                Console.WriteLine(element + " does not exist on page");
+            }
+
+            try
+            {
+                element.Click();
+            }
+            catch (NoSuchElementException noSuchElement)
+            {
+                Console.WriteLine(noSuchElement.Message);
+                Console.WriteLine("Unable to click on " + element);
+            }
+        }
+
+        public static void IsElementExist(this IWebElement element)
+        {
+            try
+            {
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
+            }
+            catch (NoSuchElementException noSuchElement)
+            {
+                Console.WriteLine(noSuchElement.Message);
+                Console.WriteLine(element + " does not exist on page");
+            }
         }
     }
 }
