@@ -14,7 +14,7 @@ namespace GalaCasino
         [FindsBy(How = How.ClassName, Using = "btn_action_login")]
         public IWebElement loginButtonHeader { get; set; }
 
-        [FindsBy(How = How.Id, Using = "userNamea")]
+        [FindsBy(How = How.Id, Using = "userName")]
         public IWebElement userNameField { get; set; }
 
         [FindsBy(How = How.Id, Using = "password")]
