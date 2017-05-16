@@ -7,9 +7,9 @@ namespace GalaCasino
 {
     public static class GetMethods
     {
-
         public static void VerifyTextIdentical(this IWebElement element, string value)
         {
+            System.Threading.Thread.Sleep(2000);
             try
             {
                 new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));

@@ -9,6 +9,7 @@ namespace GalaCasino
     {
         public static void EnterText(this IWebElement element, string value)
         {
+            System.Threading.Thread.Sleep(2000);
             try
             {
                 new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
@@ -32,6 +33,7 @@ namespace GalaCasino
 
         public static void ClickButton(this IWebElement element)
         {
+            System.Threading.Thread.Sleep(2000);
             try
             {
                 new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
@@ -55,6 +57,7 @@ namespace GalaCasino
 
         public static void IsElementExist(this IWebElement element)
         {
+            System.Threading.Thread.Sleep(2000);
             try
             {
                 new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
