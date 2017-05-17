@@ -17,7 +17,6 @@ namespace GalaCasino
             catch (WebDriverTimeoutException noSuchElement)
             {
                 Console.WriteLine(noSuchElement.Message);
-                Console.WriteLine(element + " does not exist on page");
             }
 
             try
@@ -27,7 +26,6 @@ namespace GalaCasino
             catch(InvalidOperationException unableToSendKeys)
             {
                 Console.WriteLine(unableToSendKeys.Message);
-                Console.WriteLine("Unable to send keys " + value + " to " + element);
             }
         }
 
@@ -36,22 +34,19 @@ namespace GalaCasino
             System.Threading.Thread.Sleep(2000);
             try
             {
-                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(4)).Until(ExpectedConditions.ElementToBeClickable(element));
+                element.Click();
             }
             catch (WebDriverTimeoutException noSuchElement)
             {
                 Console.WriteLine(noSuchElement.Message);
-                Console.WriteLine(element + " does not exist on page");
-            }
-
-            try
-            {
-                element.Click();
             }
             catch (NoSuchElementException noSuchElement)
             {
                 Console.WriteLine(noSuchElement.Message);
-                Console.WriteLine("Unable to click on " + element);
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -65,7 +60,6 @@ namespace GalaCasino
             catch (WebDriverTimeoutException noSuchElement)
             {
                 Console.WriteLine(noSuchElement.Message);
-                Console.WriteLine(element + " does not exist on page");
             }
         }
     }

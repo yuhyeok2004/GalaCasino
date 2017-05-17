@@ -18,20 +18,28 @@ namespace GalaCasino
         {
         }
 
-        [SetUp]
-        public void Initialize()
+        [OneTimeSetUp]
+        public void StartReport()
         {
             var pth = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
             var actulPath = pth.Substring(0, pth.LastIndexOf("bin"));
             var projectPath = new Uri(actulPath).LocalPath;
-            
-            var fileName = this.GetType().ToString() + ".html";
+
+            var fileName = GetType().ToString() + ".html";
             var htmlReporter = new ExtentHtmlReporter(projectPath + fileName);
 
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
 
+            extent.AddSystemInfo("Environment", "Prod");
+            extent.AddSystemInfo("Tester", "Test");
+
             PropertiesCollection.driver = new ChromeDriver();
+        }
+
+        [SetUp]
+        public void Initialize()
+        {
             PropertiesCollection.driver.Manage().Window.Maximize();
             PropertiesCollection.driver.Navigate().GoToUrl("https://www.galacasino.com/");
             ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\NUnit\Data.xlsx");
@@ -40,19 +48,39 @@ namespace GalaCasino
         [Test]
         public void LoginGoodTest()
         {
-            test = extent.CreateTest("test");
+            test = extent.CreateTest("LoginGoodTest");
             HomePageObject page = new HomePageObject();
             page.LoginGood();
-            test.Pass("Hi");
+        }
+
+        [Test]
+        public void LoginGoodTest1()
+        {
+            test = extent.CreateTest("LoginGoodTest1");
+            HomePageObject page = new HomePageObject();
+            page.LoginGood();
         }
 
         [TearDown]
         public void CleanUp()
         {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var errormessage = TestContext.CurrentContext.Result.Message;
+
+            if(status == NUnit.Framework.Interfaces.TestStatus.Failed)
+            {
+                test.Log(Status.Fail, status + errormessage);
+            }
+        }
+        
+        [OneTimeTearDown]
+        public void EndReport()
+        {
+            extent.Flush();
+
             PropertiesCollection.driver.Quit();
             AssistFunctions assistFunc = new AssistFunctions();
             assistFunc.killProcess("ChromeDriver");
-            extent.Flush();
         }
     }
 }

@@ -17,7 +17,6 @@ namespace GalaCasino
             catch(WebDriverTimeoutException noSuchElement)
             {
                 Console.WriteLine(noSuchElement.Message);
-                Console.WriteLine(element + " does not exist on page");
             }
 
             try
@@ -27,7 +26,6 @@ namespace GalaCasino
             catch (AssertionException textOnPageNotAsExpected)
             {
                 Console.WriteLine(textOnPageNotAsExpected.Message);
-                Console.WriteLine("");
             }
         }
 
