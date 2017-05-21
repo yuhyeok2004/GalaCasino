@@ -4,14 +4,14 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace GalaCasino
 {
-    class HomePageObject
+    class HomePageObject : Program
     {
         public HomePageObject()
         {
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
 
-        [FindsBy(How = How.ClassName, Using = "btn_action_logina")]
+        [FindsBy(How = How.ClassName, Using = "btn_action_login")]
         public IWebElement loginButtonHeader { get; set; }
 
         [FindsBy(How = How.Id, Using = "userName")]
@@ -34,11 +34,12 @@ namespace GalaCasino
 
         public void LoginGood()
         {
-            loginButtonHeader.ClickButton();
+            PropertiesCollection.driver.Navigate().GoToUrl("https://www.galacasino.com/");
+            loginButtonHeader.ClickButton(test);
             userNameField.EnterText(ExcelLib.ReadData(1, "userName"));
             passwordField.EnterText(ExcelLib.ReadData(1, "password"));
-            loginSubmitButton.ClickButton();
-            myAccountButtonHeader.ClickButton();
+            loginSubmitButton.ClickButton(test);
+            myAccountButtonHeader.ClickButton(test);
             myAccountWelcome.VerifyTextIdentical(ExcelLib.ReadData(1, "user_in2906161_Name"));
         }
     }

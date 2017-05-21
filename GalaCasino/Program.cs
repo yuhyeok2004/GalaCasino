@@ -34,31 +34,14 @@ namespace GalaCasino
             extent.AddSystemInfo("Environment", "Prod");
             extent.AddSystemInfo("Tester", "Test");
 
-            PropertiesCollection.driver = new ChromeDriver();
+            ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\NUnit\Data.xlsx");
         }
 
         [SetUp]
         public void Initialize()
         {
+            PropertiesCollection.driver = new ChromeDriver();
             PropertiesCollection.driver.Manage().Window.Maximize();
-            PropertiesCollection.driver.Navigate().GoToUrl("https://www.galacasino.com/");
-            ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\NUnit\Data.xlsx");
-        }
-
-        [Test]
-        public void LoginGoodTest()
-        {
-            test = extent.CreateTest("LoginGoodTest");
-            HomePageObject page = new HomePageObject();
-            page.LoginGood();
-        }
-
-        [Test]
-        public void LoginGoodTest1()
-        {
-            test = extent.CreateTest("LoginGoodTest1");
-            HomePageObject page = new HomePageObject();
-            page.LoginGood();
         }
 
         [TearDown]
@@ -71,16 +54,16 @@ namespace GalaCasino
             {
                 test.Log(Status.Fail, status + errormessage);
             }
+
+            PropertiesCollection.driver.Quit();
+            AssistFunctions assistFunc = new AssistFunctions();
+            assistFunc.killProcess("ChromeDriver");
         }
         
         [OneTimeTearDown]
         public void EndReport()
         {
             extent.Flush();
-
-            PropertiesCollection.driver.Quit();
-            AssistFunctions assistFunc = new AssistFunctions();
-            assistFunc.killProcess("ChromeDriver");
         }
     }
 }
