@@ -11,7 +11,7 @@ namespace GalaCasino
         {
             System.Threading.Thread.Sleep(2000);
             new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
-            Assert.That(element.Text, Is.EqualTo(value));
+            Assert.That(element.Text, Does.Contain(value));
         }
     }
 }

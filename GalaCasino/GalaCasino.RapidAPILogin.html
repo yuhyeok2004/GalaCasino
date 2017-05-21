@@ -43,7 +43,7 @@
         <ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 
             <a>
-                <span class='suite-start-time label blue darken-3'>21/05/2017 15:18:53 Jerusalem Standard Time</span>
+                <span class='suite-start-time label blue darken-3'>21/05/2017 15:36:21 Jerusalem Standard Time</span>
             </a>
             <a>
                 <span class="label blue darken-3">v3.0.2</span>
@@ -123,28 +123,14 @@
                     <canvas id='parent-analysis' width='100' height='80'></canvas>
                 </div>
                 <div class='block text-small'>
-                    <span><span class='strong'>0</span> test(s) passed</span>
+                    <span><span class='strong'>1</span> test(s) passed</span>
                 </div>
                 <div class='block text-small'>
-                    <span class='strong'>1</span> test(s) failed, <span class='strong'>0</span> others
+                    <span class='strong'>0</span> test(s) failed, <span class='strong'>0</span> others
                 </div>
             </div>
         </div>
 
-            <div class='col s12 m6 l6 np-h'>
-                <div class='card-panel nm-v'>
-                    <div class='left panel-name'>Steps</div>
-                    <div class='chart-box'>
-                        <canvas id='child-analysis' width='100' height='80'></canvas>
-                    </div>
-                    <div class='block text-small'>
-                        <span><span class='strong'>0</span> step(s) passed</span>
-                    </div>
-                    <div class='block text-small'>
-                        <span class='strong'>1</span> step(s) failed, <span class='strong'>0</span> others
-                    </div>
-                </div>
-            </div>
 
     </div>
 </div>
@@ -156,39 +142,18 @@
             <ul id='test-collection' class='test-collection'>
 
 
-                    <li class='test displayed active  fail' status='fail' test-id='1'>
+                    <li class='test displayed active  pass' status='pass' test-id='1'>
                         <div class='test-heading'>
                             <span class='test-name'>Login: Good-Flow TC</span>
-                            <span class='test-time'>21/05/2017 15:19:00</span>
-                            <span class='test-status right fail'>Fail</span>
+                            <span class='test-time'>21/05/2017 15:36:28</span>
+                            <span class='test-status right pass'>Pass</span>
                         </div>
                         <div class='test-content hide'>
                                 <div class='test-time-info'>
-                                    <span class='label start-time'>21/05/2017 15:19:00</span>
-                                    <span class='label end-time'>21/05/2017 15:19:25</span>
-                                    <span class='label time-taken grey lighten-1 white-text'>00:00:25.2604449</span>
+                                    <span class='label start-time'>21/05/2017 15:36:28</span>
+                                    <span class='label end-time'>21/05/2017 15:36:28</span>
+                                    <span class='label time-taken grey lighten-1 white-text'>00:00:00</span>
                                 </div>
-                                    <div class='test-steps'>
-                                        <table class='bordered table-results'>
-                                            <thead>
-                                                <tr>
-                                                    <th>Status</th>
-                                                    <th>Timestamp</th>
-                                                    <th>Details</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr class='log' status='fail'>
-                                                        <td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-                                                        <td class='timestamp'>21/05/2017 15:19:25</td>
-                                                        <td class='step-details'>Failed  Expected string length 28 but was 29. Strings differ at index 0.
-  Expected: "Incorrect email or password."
-  But was:  "⚠Incorrect email or password."
-  -----------^</td>
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
 
                         </div>
                     </li>
@@ -271,25 +236,25 @@
             </div>
             <div class='col s2'>
                 <div class='card-panel r'>
- <span>Steps</span>                     <div class='panel-lead'>1</div>
+ <span>Steps</span>                     <div class='panel-lead'>0</div>
                 </div>
             </div>
             <div class='col s2'>
                 <div class='card-panel r'>
                     Start
-                    <div class='panel-lead'>21/05/2017 15:18:53</div>
+                    <div class='panel-lead'>21/05/2017 15:36:21</div>
                 </div>
             </div>
             <div class='col s2'>
                 <div class='card-panel r'>
                     End
-                    <div class='panel-lead'>21/05/2017 15:19:27</div>
+                    <div class='panel-lead'>21/05/2017 15:36:57</div>
                 </div>
             </div>
             <div class='col s2'>
                 <div class='card-panel r'>
                     Time Taken
-                    <div class='panel-lead'>00:00:34.4469703</div>
+                    <div class='panel-lead'>00:00:36.5010877</div>
                 </div>
             </div>
 
@@ -328,15 +293,15 @@
 
 		<script>
 			var statusGroup = {
-			    passParent: 0,
-			    failParent: 1,
+			    passParent: 1,
+			    failParent: 0,
 			    fatalParent: 0,
 			    errorParent: 0,
 			    warningParent: 0,
 			    skipParent: 0,
 				
 			    passChild: 0,
-			    failChild: 1,
+			    failChild: 0,
 			    fatalChild: 0,
 			    errorChild: 0,
 			    warningChild: 0,
