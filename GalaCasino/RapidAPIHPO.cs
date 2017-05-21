@@ -33,7 +33,7 @@ namespace GalaCasino
             emailField.EnterText("test@test.com");
             passwordField.EnterText("test");
             loginSubmitButton.ClickButton(test);
-            loginFailed.VerifyTextIdentical("Incorrect email or password.");
+            loginFailed.VerifyTextContaining("Incorrect email or password.");
         }
     }
 }
