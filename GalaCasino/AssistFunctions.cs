@@ -1,8 +1,11 @@
-﻿using System.Diagnostics;
+﻿using AventStack.ExtentReports;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
+using System.Diagnostics;
 
 namespace GalaCasino
 {
-    class AssistFunctions
+    class AssistFunctions : Program
     {
         public void killProcess(string processName)
         {
@@ -12,6 +15,17 @@ namespace GalaCasino
             {
                 pname[a-1].Kill();
             }
+        }
+
+        public void TestStatus(ExtentTest reporter)
+        {
+            if (reporter.Status == Status.Fail)
+            {
+                reporter.Log(Status.Fail, "Login, Good-Flow: failed");
+                reporter.AddScreenCaptureFromPath(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\Error.jpeg");
+            }
+            else
+                reporter.Log(Status.Pass, "Login, Good-Flow: ");
         }
     }
 }

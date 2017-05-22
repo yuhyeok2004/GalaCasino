@@ -12,7 +12,7 @@ namespace GalaCasino
     {
 
         public ExtentReports extent;
-        public ExtentTest test;
+        public ExtentTest reporter;
 
         static void Main(string[] args)
         {
@@ -52,7 +52,7 @@ namespace GalaCasino
 
             if(status == NUnit.Framework.Interfaces.TestStatus.Failed)
             {
-                test.Log(Status.Fail, status + errormessage);
+                reporter.Log(Status.Fail, status + errormessage);
             }
 
             PropertiesCollection.driver.Quit();

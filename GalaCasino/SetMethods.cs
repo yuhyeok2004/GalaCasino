@@ -1,39 +1,84 @@
 ﻿using AventStack.ExtentReports;
+using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Reflection;
+using System.Threading;
 
 namespace GalaCasino
 {
     public static class SetMethods
     {
-        public static void EnterText(this IWebElement element, string value)
+        public static void EnterText(this IWebElement element, string value, ExtentTest reporter)
         {
-            System.Threading.Thread.Sleep(2000);
-            new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
-            element.SendKeys(value);
+            try
+            {
+                System.Threading.Thread.Sleep(2000);
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(4)).Until(ExpectedConditions.ElementToBeClickable(element));
+                element.SendKeys(value);
+            }
+            catch(WebDriverTimeoutException e)
+            {
+                if(reporter.Status == Status.Pass)
+                {
+                    reporter.Fail(e);
+                    PropertiesCollection.driver.TakeScreenshot().SaveAsFile(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\Error.jpeg", ScreenshotImageFormat.Jpeg);
+                }
+            }
+            catch(TargetInvocationException e)
+            {
+                if (reporter.Status == Status.Pass)
+                {
+                    reporter.Fail(e);
+                    PropertiesCollection.driver.TakeScreenshot().SaveAsFile(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\Error.jpeg", ScreenshotImageFormat.Jpeg);
+                }
+            }
         }
 
-        public static void ClickButton(this IWebElement element, ExtentTest test)
+        public static void ClickButton(this IWebElement element, ExtentTest reporter)
         {
-            //try
-            //{
+            try
+            {
                 System.Threading.Thread.Sleep(2000);
                 new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(4)).Until(ExpectedConditions.ElementToBeClickable(element));
                 element.Click();
-            //}
-            //catch (Exception e)
-            //{
-            //    PropertiesCollection.driver.TakeScreenshot().SaveAsFile(@"C:\\Error", ScreenshotImageFormat.Jpeg);
-            //    test.Log(Status.Info, "ScreenShot - " + test.AddScreenCaptureFromPath(@"C:\\Error.jpeg"));
-            //}
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                if (reporter.Status == Status.Pass)
+                {
+                    reporter.Fail(e);
+                    PropertiesCollection.driver.TakeScreenshot().SaveAsFile(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\Error.jpeg", ScreenshotImageFormat.Jpeg);
+                }
+            }
+            catch (TargetInvocationException e)
+            {
+                if (reporter.Status == Status.Pass)
+                {
+                    reporter.Fail(e);
+                    PropertiesCollection.driver.TakeScreenshot().SaveAsFile(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\Error.jpeg", ScreenshotImageFormat.Jpeg);
+                }
+            }
         }
 
-        public static void IsElementExist(this IWebElement element)
+        public static void IsElementExist(this IWebElement element, ExtentTest reporter)
         {
-            System.Threading.Thread.Sleep(2000);
-            new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(30)).Until(ExpectedConditions.ElementToBeClickable(element));
+            try
+            {
+                System.Threading.Thread.Sleep(2000);
+                new WebDriverWait(PropertiesCollection.driver, TimeSpan.FromSeconds(4)).Until(ExpectedConditions.ElementToBeClickable(element));
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                if (reporter.Status == Status.Pass)
+                {
+                    reporter.Fail(e);
+                    PropertiesCollection.driver.TakeScreenshot().SaveAsFile(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\Error.jpeg", ScreenshotImageFormat.Jpeg);
+                }
+            }
         }
     }
 }

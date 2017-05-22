@@ -1,4 +1,5 @@
-﻿using NUnit;
+﻿using AventStack.ExtentReports;
+using NUnit;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -26,14 +27,14 @@ namespace GalaCasino
         [FindsBy(How = How.ClassName, Using = "login-error")]
         public IWebElement loginFailed { get; set; }
 
-        public void LoginGood()
+        public void LoginGood(ExtentTest test)
         {
             PropertiesCollection.driver.Navigate().GoToUrl("https://rapidapi.com/");
             loginButtonHeader.ClickButton(test);
-            emailField.EnterText("test@test.com");
-            passwordField.EnterText("test");
+            emailField.EnterText("test@test.com", test);
+            passwordField.EnterText("test", test);
             loginSubmitButton.ClickButton(test);
-            loginFailed.VerifyTextContaining("Incorrect email or password.");
+            loginFailed.VerifyTextContaining("Incorrect email or password.", test);
         }
     }
 }

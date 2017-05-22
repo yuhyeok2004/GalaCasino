@@ -8,9 +8,9 @@ namespace GalaCasino
         public void RapidAPILoginTC()
         {
             System.Threading.Thread.Sleep(2000);
-            test = extent.CreateTest("Login: Good-Flow TC");
+            reporter = extent.CreateTest("Login: Good-Flow TC");
             RapidAPIHPO page = new RapidAPIHPO();
-            page.LoginGood();
+            page.LoginGood(reporter);
         }
     }
 }

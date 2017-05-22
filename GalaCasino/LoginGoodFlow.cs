@@ -8,9 +8,9 @@ namespace GalaCasino
         public void LoginGoodFlowTC()
         {
             System.Threading.Thread.Sleep(2000);
-            test = extent.CreateTest("Login: Good-Flow TC");
+            reporter = extent.CreateTest("Login, Good-Flow");
             HomePageObject page = new HomePageObject();
-            page.LoginGood();
+            page.LoginGood(reporter);
         }
     }
 }
