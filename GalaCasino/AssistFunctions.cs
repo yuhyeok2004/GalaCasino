@@ -1,6 +1,8 @@
 ﻿using AventStack.ExtentReports;
+using NUnit;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
+using System;
 using System.Diagnostics;
 
 namespace GalaCasino
@@ -17,15 +19,21 @@ namespace GalaCasino
             }
         }
 
-        public void TestStatus(ExtentTest reporter)
+        public void ChangeReporterStatusToFail(ExtentTest reporter, Exception e)
         {
-            if (reporter.Status == Status.Fail)
+            if (reporter.Status == Status.Pass)
             {
-                reporter.Log(Status.Fail, "Login, Good-Flow: failed");
-                reporter.AddScreenCaptureFromPath(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\Error.jpeg");
+                reporter.Fail(e);
+                TakeScreenshot();
             }
-            else
-                reporter.Log(Status.Pass, "Login, Good-Flow: ");
+        }
+
+        public void TakeScreenshot()
+        {
+            string timeStamp = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+            string screenshotName = @"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\" + timeStamp + ".jpeg";
+            PropertiesCollection.driver.TakeScreenshot().SaveAsFile(screenshotName, ScreenshotImageFormat.Jpeg);
+            reporter.AddScreenCaptureFromPath(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\", "asd");
         }
     }
 }

@@ -45,8 +45,6 @@ namespace GalaCasino
             loginSubmitButton.ClickButton(reporter);
             myAccountButtonHeader.ClickButton(reporter);
             myAccountWelcome.VerifyTextIdentical(ExcelLib.ReadData(1, "user_in2906161_Name"), reporter);
-            assistFunc.TestStatus(reporter);
-
         }
     }
 }

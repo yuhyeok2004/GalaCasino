@@ -51,9 +51,12 @@ namespace GalaCasino
             var errormessage = TestContext.CurrentContext.Result.Message;
 
             if(status == NUnit.Framework.Interfaces.TestStatus.Failed)
-            {
                 reporter.Log(Status.Fail, status + errormessage);
-            }
+
+            if (reporter.Status == Status.Fail)
+                reporter.Log(Status.Fail, "Login, Good-Flow: failed");
+            else
+                reporter.Log(Status.Pass, "Login, Good-Flow: ");
 
             PropertiesCollection.driver.Quit();
             AssistFunctions assistFunc = new AssistFunctions();

@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 
 namespace GalaCasino
 {
@@ -7,7 +8,6 @@ namespace GalaCasino
         [Test]
         public void LoginGoodFlowTC()
         {
-            System.Threading.Thread.Sleep(2000);
             reporter = extent.CreateTest("Login, Good-Flow");
             HomePageObject page = new HomePageObject();
             page.LoginGood(reporter);
