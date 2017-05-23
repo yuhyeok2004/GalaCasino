@@ -1,7 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using NUnit;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 

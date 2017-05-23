@@ -24,16 +24,16 @@ namespace GalaCasino
             if (reporter.Status == Status.Pass)
             {
                 reporter.Fail(e);
-                TakeScreenshot();
+                TakeScreenshot(reporter);
             }
         }
 
-        public void TakeScreenshot()
+        public void TakeScreenshot(ExtentTest reporter)
         {
-            string timeStamp = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
-            string screenshotName = @"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\" + timeStamp + ".jpeg";
-            PropertiesCollection.driver.TakeScreenshot().SaveAsFile(screenshotName, ScreenshotImageFormat.Jpeg);
-            reporter.AddScreenCaptureFromPath(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Reports\", "asd");
+            string timeStamp = DateTime.Now.ToString("HH-mm-ss dd-MM-yyyy");
+            string screenshotPath = (ExcelLib.ReadData(1, "screenshotPath")) + timeStamp + ".jpeg";
+            PropertiesCollection.driver.TakeScreenshot().SaveAsFile(screenshotPath, ScreenshotImageFormat.Jpeg);
+            reporter.AddScreenCaptureFromPath(screenshotPath);
         }
     }
 }

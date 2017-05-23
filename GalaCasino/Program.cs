@@ -54,9 +54,9 @@ namespace GalaCasino
                 reporter.Log(Status.Fail, status + errormessage);
 
             if (reporter.Status == Status.Fail)
-                reporter.Log(Status.Fail, "Login, Good-Flow: failed");
+                reporter.Log(Status.Fail, "Failed");
             else
-                reporter.Log(Status.Pass, "Login, Good-Flow: ");
+                reporter.Log(Status.Pass, "Passed");
 
             PropertiesCollection.driver.Quit();
             AssistFunctions assistFunc = new AssistFunctions();
