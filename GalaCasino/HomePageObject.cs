@@ -14,7 +14,7 @@ namespace GalaCasino
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
 
-        [FindsBy(How = How.ClassName, Using = "1btn_action_login")]
+        [FindsBy(How = How.ClassName, Using = "btn_action_login")]
         public IWebElement loginButtonHeader { get; set; }
 
         [FindsBy(How = How.Id, Using = "userName")]
@@ -37,7 +37,7 @@ namespace GalaCasino
 
         public void LoginGood(ExtentTest reporter)
         {
-            PropertiesCollection.driver.Navigate().GoToUrl("https://www.galacasino.com/");
+            SetMethods.GoToURL(ExcelLib.ReadData(1, "Galacasino.com"), reporter);
             loginButtonHeader.ClickButton(reporter);
             userNameField.EnterText(ExcelLib.ReadData(1, "userName"), reporter);
             passwordField.EnterText(ExcelLib.ReadData(1, "password"), reporter);

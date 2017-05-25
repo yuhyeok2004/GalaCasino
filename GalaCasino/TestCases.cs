@@ -3,10 +3,10 @@ using System;
 
 namespace GalaCasino
 {
-    class LoginGoodFlow : Program
+    class TestCases : Program
     {
         [Test]
-        public void LoginGoodFlowTC()
+        public void LoginGoodFlow()
         {
             reporter = extent.CreateTest("Login, Good-Flow");
             HomePageObject page = new HomePageObject();

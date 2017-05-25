@@ -34,7 +34,7 @@ namespace GalaCasino
             extent.AddSystemInfo("Environment", "Prod");
             extent.AddSystemInfo("Tester", "Test");
 
-            ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\NUnit\Data.xlsx");
+            ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Data.xlsx");
         }
 
         [SetUp]
@@ -50,13 +50,8 @@ namespace GalaCasino
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             var errormessage = TestContext.CurrentContext.Result.Message;
 
-            if(status == NUnit.Framework.Interfaces.TestStatus.Failed)
-                reporter.Log(Status.Fail, status + errormessage);
-
-            if (reporter.Status == Status.Fail)
-                reporter.Log(Status.Fail, "Failed");
-            else
-                reporter.Log(Status.Pass, "Passed");
+            //if(status == NUnit.Framework.Interfaces.TestStatus.Failed)
+            //    reporter.Log(Status.Fail, status + errormessage);
 
             PropertiesCollection.driver.Quit();
             AssistFunctions assistFunc = new AssistFunctions();

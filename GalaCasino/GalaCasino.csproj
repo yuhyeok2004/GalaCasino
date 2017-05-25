@@ -85,12 +85,12 @@
     <Compile Include="ExcelLib.cs" />
     <Compile Include="GetMethods.cs" />
     <Compile Include="HomePageObject.cs" />
-    <Compile Include="LoginGoodFlow.cs" />
+    <Compile Include="TestCases.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="PropertiesCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RapidAPIHPO.cs" />
-    <Compile Include="RapidAPILogin.cs" />
+    <Compile Include="TestPageObject.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="SetMethods.cs" />
   </ItemGroup>
   <ItemGroup>

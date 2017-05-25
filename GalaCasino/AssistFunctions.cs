@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace GalaCasino
 {
@@ -21,11 +22,9 @@ namespace GalaCasino
 
         public void ChangeReporterStatusToFail(ExtentTest reporter, Exception e)
         {
-            if (reporter.Status == Status.Pass)
-            {
-                reporter.Fail(e);
-                TakeScreenshot(reporter);
-            }
+            reporter.Fail(e);
+            TakeScreenshot(reporter);
+            Thread.CurrentThread.Abort();
         }
 
         public void TakeScreenshot(ExtentTest reporter)
