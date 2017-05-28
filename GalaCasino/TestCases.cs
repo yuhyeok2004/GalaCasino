@@ -12,5 +12,13 @@ namespace GalaCasino
             HomePageObject page = new HomePageObject();
             page.LoginGood(reporter);
         }
+
+        [Test]
+        public void LoginMissingCredentials()
+        {
+            reporter = extent.CreateTest("Login, Missing Credentials");
+            HomePageObject page = new HomePageObject();
+            page.LoginMissingCredentials(reporter);
+        }
     }
 }

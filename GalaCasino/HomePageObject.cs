@@ -14,7 +14,7 @@ namespace GalaCasino
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
 
-        [FindsBy(How = How.ClassName, Using = "btn_action_login")]
+        [FindsBy(How = How.ClassName, Using = "1btn_action_login")]
         public IWebElement loginButtonHeader { get; set; }
 
         [FindsBy(How = How.Id, Using = "userName")]
@@ -35,6 +35,14 @@ namespace GalaCasino
         [FindsBy(How = How.CssSelector, Using = ".portlet-title-level .js-replacer-inline")]
         public IWebElement myAccountWelcome { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = ".field_name_username .error-tooltip")]
+        public IWebElement usernameFieldError { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".field_name_password .error-tooltip")]
+        public IWebElement passwordFieldError { get; set; }
+
+
+
         public void LoginGood(ExtentTest reporter)
         {
             SetMethods.GoToURL(ExcelLib.ReadData(1, "Galacasino.com"), reporter);
@@ -44,6 +52,16 @@ namespace GalaCasino
             loginSubmitButton.ClickButton(reporter);
             myAccountButtonHeader.ClickButton(reporter);
             myAccountWelcome.VerifyTextIdentical(ExcelLib.ReadData(1, "user_in2906161_Name"), reporter);
+        }
+
+        public void LoginMissingCredentials(ExtentTest reporter)
+        {
+            SetMethods.GoToURL(ExcelLib.ReadData(1, "Galacasino.com"), reporter);
+            loginButtonHeader.ClickButton(reporter);
+            loginSubmitButton.ClickButton(reporter);
+            usernameFieldError.VerifyTextIdentical(ExcelLib.ReadData(1, "fieldRequired"), reporter);
+            passwordFieldError.VerifyTextIdentical(ExcelLib.ReadData(1, "fieldRequired"), reporter);
+
         }
     }
 }
