@@ -61,7 +61,6 @@ namespace GalaCasino
             loginSubmitButton.ClickButton(reporter);
             usernameFieldError.VerifyTextIdentical(ExcelLib.ReadData(1, "fieldRequired"), reporter);
             passwordFieldError.VerifyTextIdentical(ExcelLib.ReadData(1, "fieldRequired"), reporter);
-
         }
     }
 }

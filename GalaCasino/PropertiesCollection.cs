@@ -17,7 +17,7 @@ namespace GalaCasino
     enum BrowserType
     {
         Chrome,
-        Firefox,
+        //Firefox,
         //IE
     }
 }

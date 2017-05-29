@@ -21,18 +21,14 @@ namespace GalaCasino
         [OneTimeSetUp]
         public void StartReport()
         {
-            var pth = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
-            var actulPath = pth.Substring(0, pth.LastIndexOf("bin"));
-            var projectPath = new Uri(actulPath).LocalPath;
 
+            AssistFunctions assistFunc = new AssistFunctions();
+            var projectPath = assistFunc.Path();
             var fileName = GetType().ToString() + ".html";
             var htmlReporter = new ExtentHtmlReporter(projectPath + fileName);
 
             extent = new ExtentReports();
-            extent.AttachReporter(htmlReporter);
-
-            extent.AddSystemInfo("Environment", "Prod");
-            extent.AddSystemInfo("Tester", "Test");
+            assistFunc.Extent(extent, htmlReporter);
 
             ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Data.xlsx");
         }
@@ -45,15 +41,14 @@ namespace GalaCasino
         [TearDown]
         public void CleanUp()
         {
-            PropertiesCollection.driver.Quit();
-            AssistFunctions assistFunc = new AssistFunctions();
-            assistFunc.killProcess("ChromeDriver");
         }
         
         [OneTimeTearDown]
         public void EndReport()
         {
+            AssistFunctions assistFunc = new AssistFunctions();
             extent.Flush();
+            assistFunc.killProcess("ChromeDriver");
         }
     }
 }

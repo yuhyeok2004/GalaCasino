@@ -14,9 +14,10 @@ namespace GalaCasino
             {
                 assistFunc.Browser(browser);
                 PropertiesCollection.driver.Manage().Window.Maximize();
-                reporter = extent.CreateTest("Login, Good-Flow " + browser);
+                reporter = extent.CreateTest("Login, Good-Flow - " + browser);
                 HomePageObject page = new HomePageObject();
                 page.LoginGood(reporter);
+                PropertiesCollection.driver.Quit();
             }
         }
 
@@ -25,10 +26,12 @@ namespace GalaCasino
         {
             foreach (BrowserType browser in Enum.GetValues(typeof(BrowserType)))
             {
+                assistFunc.Browser(browser);
                 PropertiesCollection.driver.Manage().Window.Maximize();
-                reporter = extent.CreateTest("Login, Missing Credentials " + browser);
+                reporter = extent.CreateTest("Login, Missing Credentials - " + browser);
                 HomePageObject page = new HomePageObject();
                 page.LoginMissingCredentials(reporter);
+                PropertiesCollection.driver.Quit();
             }
         }
     }

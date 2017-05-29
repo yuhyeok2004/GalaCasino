@@ -1,4 +1,5 @@
 ﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
 using NUnit;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -41,8 +42,25 @@ namespace GalaCasino
         {
             if (type == BrowserType.Chrome)
                 PropertiesCollection.driver = new ChromeDriver();
-            if(type == BrowserType.Firefox)
-                PropertiesCollection.driver = new FirefoxDriver();
+            //if(type == BrowserType.Firefox)
+                //PropertiesCollection.driver = new FirefoxDriver();
+        }
+
+        public string Path()
+        {
+            var pth = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
+            var actulPath = pth.Substring(0, pth.LastIndexOf("bin"));
+            var projectPath = new Uri(actulPath).LocalPath;
+
+            return projectPath;
+        }
+
+        public void Extent(ExtentReports extent, ExtentHtmlReporter htmlReporter)
+        {
+            extent.AddSystemInfo("Environment", "Prod");
+            extent.AddSystemInfo("Tester", "Test");
+
+            extent.AttachReporter(htmlReporter);
         }
     }
 }
