@@ -2,7 +2,6 @@
 using NUnit;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
 
 namespace GalaCasino
 {

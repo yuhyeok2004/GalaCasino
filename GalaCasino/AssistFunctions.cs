@@ -2,8 +2,6 @@
 using AventStack.ExtentReports.Reporter;
 using NUnit;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.Extensions;
 using System;
 using System.Diagnostics;
@@ -46,7 +44,7 @@ namespace GalaCasino
                 //PropertiesCollection.driver = new FirefoxDriver();
         }
 
-        public string Path()
+        public string ProjectPath()
         {
             var pth = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
             var actulPath = pth.Substring(0, pth.LastIndexOf("bin"));
@@ -55,10 +53,22 @@ namespace GalaCasino
             return projectPath;
         }
 
-        public void Extent(ExtentReports extent, ExtentHtmlReporter htmlReporter)
+        public ExtentHtmlReporter HTMLReporter()
+        {
+            ExtentHtmlReporter htmlReporter;
+            var projectPath = ProjectPath();
+            var fileName = "GalaCasino test report.html";
+            htmlReporter = new ExtentHtmlReporter(projectPath + fileName);
+
+            return htmlReporter;
+        }
+
+        public void Extent(ExtentReports extent)
         {
             extent.AddSystemInfo("Environment", "Prod");
             extent.AddSystemInfo("Tester", "Test");
+
+            ExtentHtmlReporter htmlReporter = HTMLReporter();
 
             extent.AttachReporter(htmlReporter);
         }

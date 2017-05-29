@@ -1,9 +1,6 @@
 ﻿using AventStack.ExtentReports;
-using AventStack.ExtentReports.Reporter;
 using NUnit;
 using NUnit.Framework;
-using OpenQA.Selenium.Chrome;
-using System;
 
 namespace GalaCasino
 {
@@ -21,14 +18,10 @@ namespace GalaCasino
         [OneTimeSetUp]
         public void StartReport()
         {
-
             AssistFunctions assistFunc = new AssistFunctions();
-            var projectPath = assistFunc.Path();
-            var fileName = GetType().ToString() + ".html";
-            var htmlReporter = new ExtentHtmlReporter(projectPath + fileName);
 
             extent = new ExtentReports();
-            assistFunc.Extent(extent, htmlReporter);
+            assistFunc.Extent(extent);
 
             ExcelLib.PopulateInCollection(@"C:\Users\Tzahi.Ben\Documents\Visual Studio 2015\Projects\GalaCasino\GalaCasino\Data.xlsx");
         }
