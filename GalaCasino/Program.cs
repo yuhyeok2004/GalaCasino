@@ -45,12 +45,6 @@ namespace GalaCasino
         [TearDown]
         public void CleanUp()
         {
-            var status = TestContext.CurrentContext.Result.Outcome.Status;
-            var errormessage = TestContext.CurrentContext.Result.Message;
-
-            //if(status == NUnit.Framework.Interfaces.TestStatus.Failed)
-            //    reporter.Log(Status.Fail, status + errormessage);
-
             PropertiesCollection.driver.Quit();
             AssistFunctions assistFunc = new AssistFunctions();
             assistFunc.killProcess("ChromeDriver");
