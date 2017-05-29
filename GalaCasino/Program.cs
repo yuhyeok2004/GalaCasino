@@ -40,8 +40,6 @@ namespace GalaCasino
         [SetUp]
         public void Initialize()
         {
-            PropertiesCollection.driver = new ChromeDriver();
-            PropertiesCollection.driver.Manage().Window.Maximize();
         }
 
         [TearDown]

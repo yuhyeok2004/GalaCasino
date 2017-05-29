@@ -14,7 +14,7 @@ namespace GalaCasino
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
 
-        [FindsBy(How = How.ClassName, Using = "1btn_action_login")]
+        [FindsBy(How = How.ClassName, Using = "btn_action_login")]
         public IWebElement loginButtonHeader { get; set; }
 
         [FindsBy(How = How.Id, Using = "userName")]

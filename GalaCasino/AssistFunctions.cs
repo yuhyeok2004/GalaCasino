@@ -1,6 +1,8 @@
 ﻿using AventStack.ExtentReports;
 using NUnit;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.Extensions;
 using System;
 using System.Diagnostics;
@@ -33,6 +35,14 @@ namespace GalaCasino
             string screenshotPath = (ExcelLib.ReadData(1, "screenshotPath")) + timeStamp + ".jpeg";
             PropertiesCollection.driver.TakeScreenshot().SaveAsFile(screenshotPath, ScreenshotImageFormat.Jpeg);
             reporter.AddScreenCaptureFromPath(screenshotPath);
+        }
+
+        public void Browser(BrowserType type)
+        {
+            if (type == BrowserType.Chrome)
+                PropertiesCollection.driver = new ChromeDriver();
+            if(type == BrowserType.Firefox)
+                PropertiesCollection.driver = new FirefoxDriver();
         }
     }
 }

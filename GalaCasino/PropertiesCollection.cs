@@ -13,4 +13,11 @@ namespace GalaCasino
         Name,
         ClassName
     }
+
+    enum BrowserType
+    {
+        Chrome,
+        Firefox,
+        IE
+    }
 }
