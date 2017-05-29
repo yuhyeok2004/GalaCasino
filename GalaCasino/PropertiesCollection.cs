@@ -18,6 +18,6 @@ namespace GalaCasino
     {
         Chrome,
         Firefox,
-        IE
+        //IE
     }
 }

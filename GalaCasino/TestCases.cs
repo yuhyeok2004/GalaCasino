@@ -10,21 +10,26 @@ namespace GalaCasino
         [Test]
         public void LoginGoodFlow()
         {
-            assistFunc.Browser(BrowserType.Chrome);
-            PropertiesCollection.driver.Manage().Window.Maximize();
-            reporter = extent.CreateTest("Login, Good-Flow");
-            HomePageObject page = new HomePageObject();
-            page.LoginGood(reporter);
+            foreach (BrowserType browser in Enum.GetValues(typeof(BrowserType)))
+            {
+                assistFunc.Browser(browser);
+                PropertiesCollection.driver.Manage().Window.Maximize();
+                reporter = extent.CreateTest("Login, Good-Flow " + browser);
+                HomePageObject page = new HomePageObject();
+                page.LoginGood(reporter);
+            }
         }
 
         [Test]
         public void LoginMissingCredentials()
         {
-            assistFunc.Browser(BrowserType.Firefox);
-            PropertiesCollection.driver.Manage().Window.Maximize();
-            reporter = extent.CreateTest("Login, Missing Credentials");
-            HomePageObject page = new HomePageObject();
-            page.LoginMissingCredentials(reporter);
+            foreach (BrowserType browser in Enum.GetValues(typeof(BrowserType)))
+            {
+                PropertiesCollection.driver.Manage().Window.Maximize();
+                reporter = extent.CreateTest("Login, Missing Credentials " + browser);
+                HomePageObject page = new HomePageObject();
+                page.LoginMissingCredentials(reporter);
+            }
         }
     }
 }
